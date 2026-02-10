@@ -1,0 +1,22 @@
+:root{
+  --bg:#0b0f1a;          /* charcoal */
+  --text:#eef2ff;        /* soft white */
+  --muted:#a7b0cc;       /* muted blue-grey */
+  --accent:#8b5cf6;      /* purple */
+  --accent2:#22d3ee;     /* cyan */
+}
+
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,Segoe UI,Arial}
+a{color:var(--text);text-decoration:none;opacity:.9}
+a:hover{opacity:1}
+
+input,textarea{
+  width:100%;padding:12px;border-radius:12px;
+  border:1px solid var(--border);background:#0e1730;
+  color:var(--text);outline:none
+}
+input::placeholder,textarea::placeholder{color:#7f8ab3}
+button{cursor:pointer}
