@@ -24,13 +24,27 @@ export default function Hero() {
   return (
     <section
       className="hero-section relative min-h-[90svh] lg:min-h-[90vh] flex items-center overflow-hidden"
-      style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
-        {/* Dark base overlay — desktop only (no bg image on mobile) */}
-        <div aria-hidden="true" className="absolute inset-0 bg-black/80 hidden lg:block" />
+        {/* Background image — desktop only (lg+) */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 hidden lg:block"
+          style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+        />
 
         {/* Left-to-right directional gradient — desktop only */}
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/75 to-black/60 hidden lg:block" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.8), rgba(0,0,0,0.78))" }}
+        />
+
+        {/* Right-side radial dark cushion — makes text readable while image peeks through */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: "radial-gradient(ellipse 70% 90% at 80% 50%, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)" }}
+        />
 
         {/* Bottom fade — always visible, blends into next section */}
         <div aria-hidden="true" className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent to-[#0a0a0a]" />
