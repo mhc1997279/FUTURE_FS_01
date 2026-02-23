@@ -4,7 +4,7 @@ import { awards } from "../content";
 
 export default function Awards() {
   return (
-    <SectionWrapper id="awards">
+    <SectionWrapper id="awards" className="section-awards">
       <div className="text-center mb-14">
         <span className="section-label">Recognition</span>
         <h2 className="section-title">Awards &amp; Honours</h2>

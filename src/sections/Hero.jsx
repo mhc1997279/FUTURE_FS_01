@@ -22,34 +22,22 @@ export default function Hero() {
   };
 
   return (
-<section className="relative min-h-[85vh] flex items-center overflow-hidden">
+    <section
+      className="hero-section relative min-h-[90svh] lg:min-h-[90vh] flex items-center overflow-hidden"
+      style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+    >
+        {/* Dark base overlay — desktop only (no bg image on mobile) */}
+        <div aria-hidden="true" className="absolute inset-0 bg-black/80 hidden lg:block" />
 
-        {/* ── Background: hero.avif ── */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-20 hero-bg-img"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        />
+        {/* Left-to-right directional gradient — desktop only */}
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/75 to-black/60 hidden lg:block" />
 
-        {/* Dark overlay gradient — top-left darker, readability */}
-        <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-br from-[#0c0c0e]/95 via-[#0c0c0e]/80 to-[#0c0c0e]/60" />
-
-        {/* Subtle dot-grid texture */}
-        <div aria-hidden="true" className="hero-dot-grid absolute inset-0 -z-20 pointer-events-none" />
-
-        {/* Cinematic vignette */}
-        <div aria-hidden="true" className="hero-vignette absolute inset-0 -z-20 pointer-events-none" />
-
-        {/* Top + bottom gradient fade into body bg */}
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#0c0c0e] to-transparent -z-10" />
-        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0c0c0e] to-transparent -z-10" />
-
-        {/* Teal ambient glow */}
-        <div aria-hidden="true" className="pointer-events-none absolute -left-40 top-1/4 h-[500px] w-[500px] rounded-full bg-teal-500/10 blur-[120px] -z-10" />
+        {/* Bottom fade — always visible, blends into next section */}
+        <div aria-hidden="true" className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent to-[#0a0a0a]" />
 
         {/* ── Content ── */}
-        <div className="container-xl w-full pt-32 pb-24">
-          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+        <div className="relative z-10 container-xl w-full pt-24 sm:pt-28 lg:pt-32 pb-16 lg:pb-24">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
 
             {/* LEFT — Portrait */}
             <motion.div
@@ -59,9 +47,6 @@ export default function Hero() {
               className="flex justify-center lg:justify-start order-first"
             >
               <div className="relative w-full max-w-[15rem] sm:max-w-xs md:max-w-sm">
-                {/* Static teal ambient blob — no animation */}
-                <div aria-hidden="true" className="absolute -inset-6 rounded-[2.5rem] bg-teal-500/10 blur-3xl" />
-                <div aria-hidden="true" className="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-teal-500/15 to-cyan-500/5 blur-xl" />
 
                 {/* Portrait frame */}
                 <div className="relative rounded-[1.5rem] overflow-hidden border border-teal-500/20
@@ -91,7 +76,7 @@ export default function Hero() {
             </motion.div>
 
             {/* RIGHT — Text */}
-            <div className="flex flex-col items-start text-left max-w-xl space-y-5">
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full max-w-xl mx-auto lg:mx-0 space-y-5">
 
               {/* Role badge */}
               <motion.span {...fadeUp(0.05)} className="inline-flex items-center gap-2.5 rounded-full
@@ -117,31 +102,31 @@ export default function Hero() {
 
               {/* Subtitle */}
               <motion.p {...fadeUp(0.18)}
-                className="text-base font-semibold text-gray-400 leading-relaxed tracking-wide">
+                className="text-base font-semibold text-gray-200 leading-relaxed tracking-wide">
                 AI &bull; Machine Learning &bull; Backend &bull; Frontend Engineering
               </motion.p>
 
               {/* Paragraph 1 */}
               <motion.p {...fadeUp(0.24)}
-                className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-[600px]">
+                className="text-sm sm:text-base text-gray-200 leading-relaxed max-w-[600px]">
                 I build real, working software — from backend systems and APIs to clean frontend interfaces and AI-based features.
               </motion.p>
 
               {/* Paragraph 2 */}
               <motion.p {...fadeUp(0.30)}
-                className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-[600px]">
+                className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-[600px]">
                 I care about writing clear code, structuring projects properly, and building applications that are reliable and easy to maintain.
               </motion.p>
 
               {/* Closing */}
               <motion.p {...fadeUp(0.35)}
-                className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-[600px]">
+                className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-[600px]">
                 I&#39;m especially interested in how AI can be integrated into practical, real-world systems.
               </motion.p>
 
               {/* Buttons */}
               <motion.div {...fadeUp(0.42)}
-                className="flex flex-wrap items-center gap-3 pt-1">
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
                 <motion.a
                   href={profile.cvPdf}
                   target="_blank"

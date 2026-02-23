@@ -81,7 +81,7 @@ export default function Projects() {
   };
 
   return (
-    <SectionWrapper id="projects">
+    <SectionWrapper id="projects" className="section-projects">
 
       {/* Header row with arrows */}
       <div className="flex items-end justify-between mb-10">

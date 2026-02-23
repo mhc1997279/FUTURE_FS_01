@@ -10,7 +10,8 @@ import Contact from "./sections/Contact";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0c0c0e] text-gray-200">
+    <div className="min-h-screen bg-[#0a0a0a] text-gray-200">
+
       <Navbar />
       <main>
         <Hero />

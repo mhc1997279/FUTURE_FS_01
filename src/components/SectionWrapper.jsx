@@ -7,7 +7,9 @@ import Container from "./Container";
 export default function SectionWrapper({ id, children, className = "" }) {
   return (
     <section id={id} className={`py-14 md:py-20 scroll-mt-20 ${className}`}>
-      <Container>{children}</Container>
+      <div className="relative z-10">
+        <Container>{children}</Container>
+      </div>
     </section>
   );
 }

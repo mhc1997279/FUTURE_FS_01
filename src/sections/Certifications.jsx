@@ -4,7 +4,7 @@ import { certifications } from "../content";
 
 export default function Certifications() {
   return (
-    <SectionWrapper id="certifications">
+    <SectionWrapper id="certifications" className="section-certs">
       <div className="text-center mb-14">
         <span className="section-label">Credentials</span>
         <h2 className="section-title">Certifications</h2>

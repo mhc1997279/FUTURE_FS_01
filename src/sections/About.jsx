@@ -18,7 +18,7 @@ const scrollTo = (id) => {
 
 export default function About() {
   return (
-    <SectionWrapper id="about">
+    <SectionWrapper id="about" className="section-about">
       <div className="grid lg:grid-cols-[1fr_360px] gap-12 xl:gap-20 items-start">
 
         {/* LEFT — text + CTA */}

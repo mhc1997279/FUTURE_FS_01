@@ -92,7 +92,7 @@ function EducationCard({ edu }) {
 
 export default function Resume() {
   return (
-    <SectionWrapper id="resume">
+    <SectionWrapper id="resume" className="section-resume">
       <div className="text-center mb-14">
         <span className="section-label">Background</span>
         <h2 className="section-title">Experience &amp; Education</h2>

@@ -39,7 +39,7 @@ export default function Contact() {
   };
 
   return (
-    <SectionWrapper id="contact">
+    <SectionWrapper id="contact" className="section-contact">
       <div className="text-center mb-14">
         <span className="section-label">{contact.title}</span>
         <h2 className="section-title">Get In Touch</h2>

@@ -15,9 +15,10 @@
   }
 
   body {
-    @apply antialiased bg-[#0c0c0e] text-gray-200;
+    @apply antialiased text-gray-200;
     font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
     overflow-x: hidden;
+    background-color: #0a0a0a;
   }
 
   ::selection {
@@ -114,9 +115,197 @@
 
 /* ─── Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0c0c0e; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
 ::-webkit-scrollbar-thumb { background: #2a2a30; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #3a3a42; }
+
+/* ─── Section Background Atmospheres ─────────────────── */
+
+/* About — teal glow top-left, sky hint bottom-right */
+.section-about {
+  position: relative;
+  background:
+    linear-gradient(to bottom, #0a0a0a 0px, transparent 80px, transparent calc(100% - 80px), #0a0a0a 100%),
+    #0a0a0a;
+  overflow: hidden;
+}
+.section-about::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: -160px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(20,184,166,0.10) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.section-about::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  right: -100px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(56,189,248,0.07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Projects — dark navy, faint grid, teal glow right */
+.section-projects {
+  position: relative;
+  background:
+    linear-gradient(to bottom, #0a0a0a 0px, transparent 80px, transparent calc(100% - 80px), #0a0a0a 100%),
+    #0a0a0a;
+  overflow: hidden;
+}
+.section-projects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+.section-projects::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -200px;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(20,184,166,0.10) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Resume — soft sky spotlight from top-center */
+.section-resume {
+  position: relative;
+  background:
+    linear-gradient(to bottom, #0a0a0a 0px, transparent 80px, transparent calc(100% - 80px), #0a0a0a 100%),
+    #0a0a0a;
+  overflow: hidden;
+}
+.section-resume::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 420px;
+  background: radial-gradient(ellipse at center top, rgba(56,189,248,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Awards — teal glow bottom-center, sky hint top-right */
+.section-awards {
+  position: relative;
+  background:
+    linear-gradient(to bottom, #0a0a0a 0px, transparent 80px, transparent calc(100% - 80px), #0a0a0a 100%),
+    #0a0a0a;
+  overflow: hidden;
+}
+.section-awards::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(56,189,248,0.07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.section-awards::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 350px;
+  background: radial-gradient(ellipse at center bottom, rgba(20,184,166,0.10) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Certifications — teal + sky glow */
+.section-certs {
+  position: relative;
+  background:
+    linear-gradient(to bottom, #0a0a0a 0px, transparent 80px, transparent calc(100% - 80px), #0a0a0a 100%),
+    #0a0a0a;
+  overflow: hidden;
+}
+.section-certs::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(20,184,166,0.10) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.section-certs::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  left: -80px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(56,189,248,0.07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Contact — minimal, dark, teal near form + cool accent top-left */
+.section-contact {
+  position: relative;
+  background:
+    linear-gradient(to bottom, #0a0a0a 0px, transparent 80px, transparent calc(100% - 80px), #0a0a0a 100%),
+    #0a0a0a;
+  overflow: hidden;
+}
+.section-contact::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: -80px;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(56,189,248,0.07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.section-contact::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  right: 12%;
+  width: 520px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(20,184,166,0.10) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Hero: hide background image on mobile & tablet ─── */
+@media (max-width: 1023px) {
+  .hero-section {
+    background-image: none !important;
+    background-color: #0a0a0a;
+  }
+}
 
 /* ─── Hero section: aurora + dot grid + vignette ─       */
 .hero-bg-img {
