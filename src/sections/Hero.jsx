@@ -36,7 +36,7 @@ export default function Hero() {
         <div
           aria-hidden="true"
           className="absolute inset-0 hidden lg:block"
-          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.8), rgba(0,0,0,0.78))" }}
+          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.8 ), rgba(0,0,0,0.78))" }}
         />
 
         {/* Right-side radial dark cushion — makes text readable while image peeks through */}

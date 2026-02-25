@@ -5,18 +5,24 @@ import SectionWrapper from "../components/SectionWrapper";
 import { contact, profile } from "../content";
 
 const INFO_ITEMS = [
-  { icon: Mail,     label: "Email",    value: profile.email,        href: `mailto:${profile.email}`    },
-  { icon: Phone,    label: "Phone",    value: profile.phone,        href: `tel:${profile.phone}`       },
-  { icon: Linkedin, label: "LinkedIn", value: profile.linkedin?.text ?? "LinkedIn", href: profile.linkedin?.url ?? "#" },
-  { icon: Github,   label: "GitHub",   value: profile.github?.text ?? "GitHub",    href: profile.github?.url   ?? "#" },
+  { icon: Mail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  { icon: Phone, label: "Phone", value: profile.phone, href: `tel:${profile.phone}` },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: profile.linkedin?.text ?? "LinkedIn",
+    href: profile.linkedin?.url ?? "#",
+  },
+  { icon: Github, label: "GitHub", value: profile.github?.text ?? "GitHub", href: profile.github?.url ?? "#" },
 ];
 
-const INIT = { name: "", email: "", subject: "", message: "" };
+const INIT = { name: "", email: "", message: "" };
 const STATUS = { idle: "idle", loading: "loading", success: "success", error: "error" };
 
 export default function Contact() {
   const [form, setForm] = useState(INIT);
   const [status, setStatus] = useState(STATUS.idle);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -24,18 +30,31 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(STATUS.loading);
+    setErrorMsg("");
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
       });
-      setStatus(res.ok ? STATUS.success : STATUS.error);
-      if (res.ok) setForm(INIT);
-    } catch {
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data?.error || "Something went wrong.");
+      }
+
+      setStatus(STATUS.success);
+      setForm(INIT);
+    } catch (err) {
       setStatus(STATUS.error);
+      setErrorMsg(err.message || "Failed to send. Try again.");
     }
-    setTimeout(() => setStatus(STATUS.idle), 5000);
   };
 
   return (
@@ -77,31 +96,50 @@ export default function Contact() {
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Name</label>
-              <input id="name" name="name" value={form.name} onChange={handleChange}
-                required placeholder="Your name"
-                className="form-input" />
+              <input
+                id="name"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                required
+                minLength={2}
+                maxLength={80}
+                disabled={status === STATUS.loading}
+                placeholder="Your name"
+                className="form-input"
+              />
             </div>
             <div>
               <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Email</label>
-              <input id="email" name="email" type="email" value={form.email} onChange={handleChange}
-                required placeholder="your@email.com"
-                className="form-input" />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+                disabled={status === STATUS.loading}
+                placeholder="your@email.com"
+                className="form-input"
+              />
             </div>
-          </div>
-
-          <div>
-            <label htmlFor="subject" className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Subject</label>
-            <input id="subject" name="subject" value={form.subject} onChange={handleChange}
-              required placeholder="What's this about?"
-              className="form-input" />
           </div>
 
           <div>
             <label htmlFor="message" className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Message</label>
-            <textarea id="message" name="message" value={form.message} onChange={handleChange}
-              required placeholder="Tell me about your project or opportunity…"
+            <textarea
+              id="message"
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              required
+              minLength={10}
+              maxLength={3000}
+              disabled={status === STATUS.loading}
+              placeholder="Tell me about your project or opportunity…"
               rows={5}
-              className="form-input resize-none" />
+              className="form-input resize-none"
+            />
           </div>
 
           {/* Status feedback */}
@@ -112,7 +150,7 @@ export default function Contact() {
           )}
           {status === STATUS.error && (
             <p className="flex items-center gap-2 text-sm text-red-400 font-medium">
-              <AlertCircle size={16} /> Something went wrong. Please try again.
+              <AlertCircle size={16} /> {errorMsg}
             </p>
           )}
 
