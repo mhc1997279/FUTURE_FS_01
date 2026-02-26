@@ -74,7 +74,7 @@ export default function Contact() {
               key={label}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
-              rel="noreferrer"
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
               whileHover={{ x: 4 }}
               className="group flex items-center gap-4 p-4 rounded-xl
                 border border-white/[0.07] bg-[#141418] hover:border-teal-500/30 transition-all duration-200"

@@ -80,7 +80,7 @@ export default function Navbar() {
             <a
               href={profile.github.url}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               aria-label="GitHub"
               className="p-2 rounded-lg text-gray-500 hover:text-teal-400 hover:bg-teal-500/[0.08] transition-all duration-150"
             >
@@ -89,7 +89,7 @@ export default function Navbar() {
             <a
               href={profile.linkedin.url}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
               className="p-2 rounded-lg text-gray-500 hover:text-teal-400 hover:bg-teal-500/[0.08] transition-all duration-150"
             >

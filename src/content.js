@@ -25,7 +25,7 @@ export const profile = {
     text: "github.com/mhc1997279",
   },
   linkedin: {
-    url: "https://www.linkedin.com/",
+    url: "https://www.linkedin.com/in/mohammedcalcuttawala/",
     text: "linkedin.com/in/mohammedcalcuttawala",
   },
   cvPdf,
